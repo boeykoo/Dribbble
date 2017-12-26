@@ -26,8 +26,7 @@ public class AuthActivity extends AppCompatActivity {
 
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     @BindView(R.id.webview) WebView webView;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

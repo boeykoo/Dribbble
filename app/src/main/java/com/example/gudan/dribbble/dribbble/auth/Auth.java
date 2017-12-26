@@ -28,10 +28,10 @@ public class Auth {
     private static final String KEY_ACCESS_TOKEN = "access_token";
 
     // use yours
-    private static final String CLIENT_ID = "16b5398857f25ebbcf6e8efe9c27f6379998d0de45a16f24a042d3f3670a6a71";
+    private static final String CLIENT_ID = "a60ceaa021175c1aa55f2e5543d4ae344686052e36c182d8b8acf6559e0a6a6f";
 
     // use yours
-    private static final String CLIENT_SECRET = "ac82fa0892b5215185c6b4246561286227a0c79d33f3e83979eebf3da9d9b763";
+    private static final String CLIENT_SECRET = "c43b042fb3bcd33c17f7678e68213ac9a9dad173e5fae991315f7e35af53ceb1";
 
     // see http://developer.dribbble.com/v1/oauth/#scopes
     private static final String SCOPE = "public+write";
@@ -39,7 +39,7 @@ public class Auth {
     private static final String URI_AUTHORIZE = "https://dribbble.com/oauth/authorize";
     private static final String URI_TOKEN = "https://dribbble.com/oauth/token";
 
-    public static final String REDIRECT_URI = "http://www.dribbbo.com";
+    public static final String REDIRECT_URI = "http://www.gribbble.com";
 
     private static String getAuthorizeUrl() {
         String url = Uri.parse(URI_AUTHORIZE)
