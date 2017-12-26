@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.gudan.dribbble.R;
@@ -18,9 +19,8 @@ import butterknife.ButterKnife;
 
 @SuppressWarnings("ConstantConditions")
 public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
     @BindView(R.id.drawer) NavigationView navigationView;
 
     private ActionBarDrawerToggle drawerToggle;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
