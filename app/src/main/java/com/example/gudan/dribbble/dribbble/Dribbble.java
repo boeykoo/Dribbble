@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.example.gudan.dribbble.model.Bucket;
 import com.example.gudan.dribbble.model.Shot;
 import com.example.gudan.dribbble.model.User;
 import com.example.gudan.dribbble.utils.ModelUtils;
@@ -23,6 +24,9 @@ public class Dribbble {
 
     private static final String TAG = "Dribbble API";
 
+    // Dribbble loads everything in a 12-per-page manner
+    public static final int COUNT_PER_PAGE = 12;
+
     private static final String API_URL = "https://api.dribbble.com/v1/";
 
     private static final String SHOTS_END_POINT = API_URL + "shots";
@@ -34,6 +38,7 @@ public class Dribbble {
     private static final String KEY_USER = "user";
 
     private static final TypeToken<List<Shot>> SHOT_LIST_TYPE = new TypeToken<List<Shot>>(){};
+    private static final TypeToken<List<Bucket>> BUCKET_LIST_TYPE = new TypeToken<List<Bucket>>(){};
     private static final TypeToken<User> USER_TYPE = new TypeToken<User>(){};
 
     private static OkHttpClient client = new OkHttpClient();
@@ -124,5 +129,10 @@ public class Dribbble {
     public static List<Shot> getShots(int page) throws IOException, JsonSyntaxException {
         String url = SHOTS_END_POINT + "?page=" + page;
         return parseResponse(makeGetRequest(url), SHOT_LIST_TYPE);
+    }
+
+    public static List<Bucket> getUserBuckets(int page) throws IOException, JsonSyntaxException {
+        String url = USER_END_POINT + "/" + "buckets?page=" + page;
+        return parseResponse(makeGetRequest(url), BUCKET_LIST_TYPE);
     }
 }
