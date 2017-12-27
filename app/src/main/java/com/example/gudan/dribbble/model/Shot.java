@@ -1,6 +1,8 @@
 package com.example.gudan.dribbble.model;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import java.util.Date;
 import java.util.Map;
@@ -34,13 +36,12 @@ public class Shot {
     @Nullable
     public String getImageUrl() {
         if (images == null) {
-            return null;
-        } else if (animated) {
-            return images.get(IMAGE_NORMAL);
+            return "";
         }
 
-        return images.containsKey(IMAGE_HIDPI)
+        String url = images.containsKey(IMAGE_HIDPI)
                 ? images.get(IMAGE_HIDPI)
                 : images.get(IMAGE_NORMAL);
+        return url == null ? "" : url;
     }
 }
