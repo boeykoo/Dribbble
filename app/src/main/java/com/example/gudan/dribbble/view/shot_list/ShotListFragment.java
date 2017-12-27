@@ -29,8 +29,6 @@ public class ShotListFragment extends Fragment {
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
-    private static final int COUNT_PER_PAGE = 12;
-
     private ShotListAdapter adapter;
 
     public static ShotListFragment newInstance() {
@@ -58,7 +56,7 @@ public class ShotListFragment extends Fragment {
             public void onLoadMore() {
                 // this method will be called when the RecyclerView is displayed
                 // page starts from 1
-                AsyncTaskCompat.executeParallel(new LoadShotTask(adapter.getDataCount() / COUNT_PER_PAGE + 1));
+                AsyncTaskCompat.executeParallel(new LoadShotTask(adapter.getDataCount() / Dribbble.COUNT_PER_PAGE + 1));
             }
         });
         recyclerView.setAdapter(adapter);
@@ -88,6 +86,7 @@ public class ShotListFragment extends Fragment {
             // this method is executed on UI thread!!!!
             if (shots != null) {
                 adapter.append(shots);
+                adapter.setShowLoading(shots.size() == Dribbble.COUNT_PER_PAGE);
             } else {
                 Snackbar.make(getView(), "Error!", Snackbar.LENGTH_LONG).show();
             }
