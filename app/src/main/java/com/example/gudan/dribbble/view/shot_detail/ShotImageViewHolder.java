@@ -5,11 +5,11 @@ import android.view.View;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
-class ImageViewHolder extends RecyclerView.ViewHolder {
+class ShotImageViewHolder extends RecyclerView.ViewHolder {
 
     SimpleDraweeView image;
 
-    public ImageViewHolder(View itemView) {
+    public ShotImageViewHolder(View itemView) {
         super(itemView);
         image = (SimpleDraweeView) itemView;
     }

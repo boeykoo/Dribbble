@@ -8,14 +8,16 @@ import com.example.gudan.dribbble.view.base.SingleFragmentActivity;
 
 import java.util.ArrayList;
 
-public class ChooseBucketActivity extends SingleFragmentActivity {
+public class BucketListActivity extends SingleFragmentActivity {
 
     @NonNull
     @Override
     protected Fragment newFragment() {
-        ArrayList<String> chosenBucketIds = getIntent().getStringArrayListExtra(
-                BucketListFragment.KEY_CHOSEN_BUCKET_IDS);
-        return BucketListFragment.newInstance(true, chosenBucketIds);
+        boolean isChoosingMode = getIntent().getExtras().getBoolean(
+                BucketListFragment.KEY_CHOOSING_MODE);
+        ArrayList<String> chosenBucketIds = getIntent().getExtras().getStringArrayList(
+                BucketListFragment.KEY_COLLECTED_BUCKET_IDS);
+        return BucketListFragment.newInstance(null, isChoosingMode, chosenBucketIds);
     }
 
     @NonNull

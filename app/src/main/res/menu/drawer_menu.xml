@@ -8,7 +8,7 @@
             android:title="@string/drawer_menu_home" />
         <item
             android:id="@+id/drawer_item_likes"
-            android:icon="@drawable/ic_favorite_black_18dp"
+            android:icon="@drawable/ic_favorite_dribbble_18dp"
             android:title="@string/drawer_menu_likes" />
         <item
             android:id="@+id/drawer_item_buckets"

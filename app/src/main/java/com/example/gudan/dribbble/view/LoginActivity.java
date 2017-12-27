@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.gson.JsonSyntaxException;
 import com.example.gudan.dribbble.R;
 import com.example.gudan.dribbble.dribbble.Dribbble;
+import com.example.gudan.dribbble.dribbble.DribbbleException;
 import com.example.gudan.dribbble.dribbble.auth.Auth;
 import com.example.gudan.dribbble.dribbble.auth.AuthActivity;
 
@@ -55,17 +55,13 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     try {
-                        // this is a network call and it's time consuming
-                        // that's why we're doing this in a non-UI thread
                         String token = Auth.fetchAccessToken(authCode);
-
-                        // store access token in SharedPreferences
                         Dribbble.login(LoginActivity.this, token);
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-                    } catch (IOException | JsonSyntaxException e) {
+                    } catch (IOException | DribbbleException e) {
                         e.printStackTrace();
                     }
                 }

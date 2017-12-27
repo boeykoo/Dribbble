@@ -21,3 +21,4 @@ public class ShotActivity extends SingleFragmentActivity {
         return getIntent().getStringExtra(KEY_SHOT_TITLE);
     }
 }
+

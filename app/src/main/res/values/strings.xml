@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dribbble</string>
+    <string name="app_name">Gribbble</string>
 
     <string name="title_home">Dribbble</string>
     <string name="title_likes">Likes</string>
@@ -12,13 +12,9 @@
     <string name="login">Log in</string>
     <string name="logout">Log out</string>
     <string name="save">Save</string>
-    <string name="bucket">Bucket</string>
-    <string name="like">Like</string>
     <string name="share">Share</string>
-
+    <string name="share_shot">Share shot</string>
     <string name="user_profile_picture">User profile picture</string>
-    <string name="share_shot">Share this amazing shot!</string>
-    <string name="choose_bucket">Choose bucket</string>
 
     <string name="open_drawer">open drawer</string>
     <string name="close_drawer">close drawer</string>
@@ -27,10 +23,13 @@
     <string name="new_bucket_create">Create</string>
     <string name="new_bucket_cancel">Cancel</string>
     <string name="new_bucket_name">Bucket name</string>
-    <string name="new_bucket_descripiton">Bucket description</string>
+    <string name="new_bucket_description">Bucket description</string>
 
-    <string name="shot_author_picture">Shot author picture</string>
-    <string name="shot_count">{0,choice,0#0 shot|1#1 shot|1&lt;{0} shots}</string>
+    <string name="choose_bucket">Choose bucket</string>
+
+    <string name="shot_count_single">%1$d shot</string>
+    <string name="shot_count_plural">%1$d shots</string>
+
     <string name="shot_detail_loading_buckets">Loading buckets, just one second…</string>
     <string name="shot_image">Shot image</string>
 
@@ -38,6 +37,4 @@
 
     <string name="activity_login_btn_text">Log into Dribbble</string>
     <string name="activity_login_icon">Dribbble icon</string>
-    <string name="new_bucket_description">Bucket description</string>
-
 </resources>

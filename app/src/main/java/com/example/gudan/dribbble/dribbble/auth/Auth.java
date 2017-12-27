@@ -27,10 +27,7 @@ public class Auth {
     private static final String KEY_SCOPE = "scope";
     private static final String KEY_ACCESS_TOKEN = "access_token";
 
-    // use yours
     private static final String CLIENT_ID = "a60ceaa021175c1aa55f2e5543d4ae344686052e36c182d8b8acf6559e0a6a6f";
-
-    // use yours
     private static final String CLIENT_SECRET = "c43b042fb3bcd33c17f7678e68213ac9a9dad173e5fae991315f7e35af53ceb1";
 
     // see http://developer.dribbble.com/v1/oauth/#scopes

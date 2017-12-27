@@ -11,3 +11,6 @@
     android:elevation="@dimen/toolbar_elevation"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <!-- line 12: make the icon and text color white  -->
+    <!-- line 13: theme for menu  -->

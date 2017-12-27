@@ -47,8 +47,8 @@ public class NewBucketDialogFragment extends DialogFragment {
                         result.putExtra(KEY_BUCKET_NAME, bucketName.getText().toString());
                         result.putExtra(KEY_BUCKET_DESCRIPTION, bucketDescription.getText().toString());
                         getTargetFragment().onActivityResult(BucketListFragment.REQ_CODE_NEW_BUCKET,
-                                                             Activity.RESULT_OK,
-                                                             result);
+                                Activity.RESULT_OK,
+                                result);
                         dismiss();
                     }
                 })
