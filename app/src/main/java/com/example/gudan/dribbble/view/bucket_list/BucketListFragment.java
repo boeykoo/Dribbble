@@ -1,5 +1,7 @@
 package com.example.gudan.dribbble.view.bucket_list;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +24,15 @@ import com.example.gudan.dribbble.view.base.SpaceItemDecoration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BucketListFragment extends Fragment {
+
+    public static final int REQ_CODE_NEW_BUCKET = 100;
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
     @BindView(R.id.fab) FloatingActionButton fab;
@@ -65,11 +71,22 @@ public class BucketListFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Try replacing the root layout of R.layout.fragment_fab_recycler_view with
-                // FragmentLayout to see what Snackbar looks like
-                Snackbar.make(v, "Fab clicked", Snackbar.LENGTH_LONG).show();
+                NewBucketDialogFragment dialogFragment = NewBucketDialogFragment.newInstance();
+                dialogFragment.setTargetFragment(BucketListFragment.this, REQ_CODE_NEW_BUCKET);
+                dialogFragment.show(getFragmentManager(), NewBucketDialogFragment.TAG);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQ_CODE_NEW_BUCKET && resultCode == Activity.RESULT_OK) {
+            String bucketName = data.getStringExtra(NewBucketDialogFragment.KEY_BUCKET_NAME);
+            String bucketDescription = data.getStringExtra(NewBucketDialogFragment.KEY_BUCKET_DESCRIPTION);
+            if (!TextUtils.isEmpty(bucketName)) {
+                AsyncTaskCompat.executeParallel(new NewBucketTask(bucketName, bucketDescription));
+            }
+        }
     }
 
     private class LoadBucketTask extends AsyncTask<Void, Void, List<Bucket>> {
@@ -97,6 +114,37 @@ public class BucketListFragment extends Fragment {
             if (buckets != null) {
                 adapter.append(buckets);
                 adapter.setShowLoading(buckets.size() == Dribbble.COUNT_PER_PAGE);
+            } else {
+                Snackbar.make(getView(), "Error!", Snackbar.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private class NewBucketTask extends AsyncTask<Void, Void, Bucket> {
+
+        private String name;
+        private String description;
+
+        private NewBucketTask(String name, String description) {
+            this.name = name;
+            this.description = description;
+        }
+
+        @Override
+        protected Bucket doInBackground(Void... params) {
+            try {
+                return Dribbble.newBucket(name, description);
+            } catch (IOException | JsonSyntaxException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bucket newBucket) {
+            // this method is executed on UI thread!!!!
+            if (newBucket != null) {
+                adapter.prepend(Collections.singletonList(newBucket));
             } else {
                 Snackbar.make(getView(), "Error!", Snackbar.LENGTH_LONG).show();
             }

@@ -71,6 +71,7 @@ public class BucketListAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return showLoading ? data.size() + 1 : data.size();
     }
+
     @Override
     public int getItemViewType(int position) {
         return position < data.size()
@@ -80,6 +81,11 @@ public class BucketListAdapter extends RecyclerView.Adapter {
 
     public void append(@NonNull List<Bucket> moreBuckets) {
         data.addAll(moreBuckets);
+        notifyDataSetChanged();
+    }
+
+    public void prepend(@NonNull List<Bucket> data) {
+        this.data.addAll(0, data);
         notifyDataSetChanged();
     }
 

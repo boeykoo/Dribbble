@@ -37,5 +37,6 @@
 
     <string name="activity_login_btn_text">Log into Dribbble</string>
     <string name="activity_login_icon">Dribbble icon</string>
+    <string name="new_bucket_description">Bucket description</string>
 
 </resources>
