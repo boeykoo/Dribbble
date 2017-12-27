@@ -13,6 +13,8 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.example.gudan.dribbble.R;
 import com.example.gudan.dribbble.model.Shot;
+import com.example.gudan.dribbble.view.bucket_list.ChooseBucketActivity;
+
 
 // ShotAdapter is used to display a Shot object as items in RecyclerView
 class ShotAdapter extends RecyclerView.Adapter {
@@ -72,6 +74,12 @@ class ShotAdapter extends RecyclerView.Adapter {
                         share(v.getContext());
                     }
                 });
+                shotDetailViewHolder.bucketButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bucket(v.getContext());
+                    }
+                });
                 break;
         }
     }
@@ -97,5 +105,11 @@ class ShotAdapter extends RecyclerView.Adapter {
         shareIntent.setType("text/plain");
         context.startActivity(Intent.createChooser(shareIntent,
                 context.getString(R.string.share_shot)));
+    }
+
+    private void bucket(Context context) {
+        Intent intent = new Intent(context, ChooseBucketActivity.class);
+        // TODO: we need to pass in the chosen bucket ids here
+        context.startActivity(intent);
     }
 }

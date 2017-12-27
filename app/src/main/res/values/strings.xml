@@ -18,6 +18,7 @@
 
     <string name="user_profile_picture">User profile picture</string>
     <string name="share_shot">Share this amazing shot!</string>
+    <string name="choose_bucket">Choose bucket</string>
 
     <string name="open_drawer">open drawer</string>
     <string name="close_drawer">close drawer</string>
